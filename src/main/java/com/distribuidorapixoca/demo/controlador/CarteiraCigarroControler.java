@@ -2,7 +2,7 @@ package com.distribuidorapixoca.demo.controlador;
 
 import com.distribuidorapixoca.demo.dto.CarteiraDeCigarroDTO;
 import com.distribuidorapixoca.demo.model.CarteiraCigarro;
-import com.distribuidorapixoca.demo.servico.CarteiraCigarroServico;
+import com.distribuidorapixoca.demo.servico.impl.CarteiraCigarroServicoImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -12,8 +12,8 @@ import java.util.List;
 @RequestMapping("/api/carteiracigarro")
 public class CarteiraCigarroControler {
 
-    private CarteiraCigarroServico carteiraCigarroServico;
-    public CarteiraCigarroControler(CarteiraCigarroServico carteiraCigarroServico){
+    private CarteiraCigarroServicoImpl carteiraCigarroServico;
+    public CarteiraCigarroControler(CarteiraCigarroServicoImpl carteiraCigarroServico){
         this.carteiraCigarroServico = carteiraCigarroServico;
     }
 

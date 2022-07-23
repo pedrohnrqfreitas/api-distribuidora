@@ -2,10 +2,7 @@ package com.distribuidorapixoca.demo.controlador;
 
 import com.distribuidorapixoca.demo.dto.PodDTO;
 import com.distribuidorapixoca.demo.model.Pod;
-import com.distribuidorapixoca.demo.servico.PodServico;
-import lombok.Getter;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.parameters.P;
+import com.distribuidorapixoca.demo.servico.impl.PodServicoImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -15,8 +12,8 @@ import java.util.List;
 @RequestMapping("/Api/pods")
 public class PodControlador {
 
-    private PodServico podServico;
-    public PodControlador(PodServico podServico) {
+    private PodServicoImpl podServico;
+    public PodControlador(PodServicoImpl podServico) {
         this.podServico = podServico;
     }
 

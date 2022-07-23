@@ -2,8 +2,7 @@ package com.distribuidorapixoca.demo.controlador;
 
 import com.distribuidorapixoca.demo.dto.BebidasDTO;
 import com.distribuidorapixoca.demo.model.Bebidas;
-import com.distribuidorapixoca.demo.repositorio.BebidaRepostorio;
-import com.distribuidorapixoca.demo.servico.BebidasServico;
+import com.distribuidorapixoca.demo.servico.impl.BebidasServicoImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,9 +11,9 @@ import java.util.List;
 @RequestMapping("/api/bebidas")
 public class BebidaControler {
 
-    private BebidasServico bebidasServico;
+    private BebidasServicoImpl bebidasServico;
 
-    public BebidaControler(BebidasServico bebidasServico){
+    public BebidaControler(BebidasServicoImpl bebidasServico){
         this.bebidasServico = bebidasServico;
     }
 

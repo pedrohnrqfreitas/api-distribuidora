@@ -4,7 +4,7 @@ import com.distribuidorapixoca.demo.dto.CategoriaDTO;
 import com.distribuidorapixoca.demo.dto.CategoriaListDTO;
 import com.distribuidorapixoca.demo.model.Categoria;
 import com.distribuidorapixoca.demo.servico.CategoriaServico;
-import org.springframework.stereotype.Controller;
+import com.distribuidorapixoca.demo.servico.impl.CategoriaServicoImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

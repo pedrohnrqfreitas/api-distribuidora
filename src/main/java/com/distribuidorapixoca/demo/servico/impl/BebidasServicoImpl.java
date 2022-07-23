@@ -1,27 +1,30 @@
-package com.distribuidorapixoca.demo.servico;
+package com.distribuidorapixoca.demo.servico.impl;
 
+import com.distribuidorapixoca.demo.builder.BebidaBuilder;
 import com.distribuidorapixoca.demo.dto.BebidasDTO;
 import com.distribuidorapixoca.demo.model.Bebidas;
 import com.distribuidorapixoca.demo.model.Categoria;
 import com.distribuidorapixoca.demo.repositorio.BebidaRepostorio;
 import com.distribuidorapixoca.demo.repositorio.CategoriaRepositorio;
+import com.distribuidorapixoca.demo.servico.BebidasService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class BebidasServico {
+public class BebidasServicoImpl implements BebidasService {
 
     private BebidaRepostorio bebidaRepostorio;
     private CategoriaRepositorio categoriaRepositorio;
 
-    public BebidasServico(BebidaRepostorio bebidaRepostorio, CategoriaRepositorio categoriaRepositorio){
+    public BebidasServicoImpl(BebidaRepostorio bebidaRepostorio, CategoriaRepositorio categoriaRepositorio){
         this.bebidaRepostorio = bebidaRepostorio;
         this.categoriaRepositorio = categoriaRepositorio;
     }
 
     public List<Bebidas> getAllBebidas(){
+
         return bebidaRepostorio.findAll();
     }
 
@@ -29,15 +32,7 @@ public class BebidasServico {
     public BebidasDTO createBebida(BebidasDTO pdt){
         Optional<Categoria> categoria = categoriaRepositorio.findById(pdt.getCategoria_id());
         if (categoria.isPresent()){
-            Bebidas bebidaEntidade = new Bebidas();
-            bebidaEntidade.setPreco(pdt.getPreco());
-            bebidaEntidade.setQuantidade(pdt.getQuantidade());
-            bebidaEntidade.setTeor(pdt.getTeor());
-            bebidaEntidade.setSabor(pdt.getSabor());
-            bebidaEntidade.setNome(pdt.getNome());
-            bebidaEntidade.setMarca(pdt.getMarca());
-            bebidaEntidade.setIsglutem(true);
-            bebidaEntidade.setCategoria(categoria.get());
+            Bebidas bebidaEntidade = BebidaBuilder.builder().withIsglutem(pdt.isIsglutem()).withMarca(pdt.getMarca()).withNome(pdt.getNome()).withSabor(pdt.getSabor()).withTeor(pdt.getTeor()).withQuantidade(pdt.getId()).withPreco(pdt.getPreco()).build();
             bebidaRepostorio.save(bebidaEntidade);
         }
         return pdt;

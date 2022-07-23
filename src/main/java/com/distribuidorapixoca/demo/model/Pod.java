@@ -20,7 +20,7 @@ public class Pod {
     @Column(name = "preco")
     private long preco;
 
-    @Column(name = "nome ")
+    @Column(name = "nome")
     private String nome;
 
     @Column(name = "sabor")
@@ -28,6 +28,7 @@ public class Pod {
 
     @Column(name = "quantidade")
     private long quantidade;
+
     @Column(name = "marca")
     private String marca;
 

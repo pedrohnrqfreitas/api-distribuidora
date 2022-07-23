@@ -2,20 +2,18 @@ package com.distribuidorapixoca.demo.controlador;
 
 import com.distribuidorapixoca.demo.dto.TabacoDTO;
 import com.distribuidorapixoca.demo.model.Tabaco;
-import com.distribuidorapixoca.demo.servico.TabacoServico;
-import lombok.Getter;
+import com.distribuidorapixoca.demo.servico.impl.TabacoServicoImpl;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/tabaco")
 public class TabacoControler {
 
-    private TabacoServico tabacoServico;
+    private TabacoServicoImpl tabacoServico;
 
-    public TabacoControler(TabacoServico tabacoServico) {this.tabacoServico = tabacoServico;}
+    public TabacoControler(TabacoServicoImpl tabacoServico) {this.tabacoServico = tabacoServico;}
 
     @GetMapping("/all")
     public List<Tabaco> getAllTabacos(){

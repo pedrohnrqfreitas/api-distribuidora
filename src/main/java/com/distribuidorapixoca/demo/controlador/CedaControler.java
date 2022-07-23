@@ -2,9 +2,7 @@ package com.distribuidorapixoca.demo.controlador;
 
 import com.distribuidorapixoca.demo.dto.CedaDTO;
 import com.distribuidorapixoca.demo.model.Ceda;
-import com.distribuidorapixoca.demo.servico.CedaServico;
-import lombok.Getter;
-import org.springframework.stereotype.Controller;
+import com.distribuidorapixoca.demo.servico.impl.CedaServicoImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,9 +11,9 @@ import java.util.List;
 @RequestMapping("/api/ceda")
 public class CedaControler {
 
-    private CedaServico cedaServico;
+    private CedaServicoImpl cedaServico;
 
-    public CedaControler(CedaServico cedaServico){this.cedaServico = cedaServico;}
+    public CedaControler(CedaServicoImpl cedaServico){this.cedaServico = cedaServico;}
 
     @GetMapping("/all")
     public List<Ceda> getAllCeda(){
