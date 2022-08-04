@@ -1,6 +1,7 @@
 package com.distribuidorapixoca.demo.builder;
 
 import com.distribuidorapixoca.demo.model.Bebidas;
+import com.distribuidorapixoca.demo.model.Categoria;
 
 public final class BebidaBuilder {
 
@@ -46,6 +47,10 @@ public final class BebidaBuilder {
         return this;
     }
 
+    public BebidaBuilder withCategoria(Categoria categoria){
+        bebidas.setCategoria(categoria);
+        return this;
+    }
 
     public BebidaBuilder withIsglutem(Boolean isglutem){
         bebidas.setIsglutem(isglutem);

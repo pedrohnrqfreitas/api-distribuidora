@@ -23,7 +23,18 @@ public class CedaServicoImpl implements CedaServico {
     }
 
     public CedaDTO createCedas(CedaDTO pdt){
-        Ceda cedaEntidade = CedaBuilder.builder().withNome(pdt.getNome()).withMarca(pdt.getMarca()).withTipo(pdt.getTipo()).withUnidadeCaixa(pdt.getUnidade_caixa()).withQuantidade(pdt.getQuantidade()).withPreco(pdt.getPreco()).build();
+        if (cedaRepositorio.existsByNomeIgnoreCaseAndMarcaIgnoreCaseAndTipoIgnoreCase(
+                pdt.getNome(), pdt.getMarca(), pdt.getTipo()
+        )){
+            throw new RuntimeException("Ceda ja existente");
+        }
+        Ceda cedaEntidade = CedaBuilder.builder()
+                .withNome(pdt.getNome())
+                .withMarca(pdt.getMarca())
+                .withTipo(pdt.getTipo())
+                .withUnidadeCaixa(pdt.getUnidade_caixa())
+                .withQuantidade(pdt.getQuantidade())
+                .withPreco(pdt.getPreco()).build();
         cedaRepositorio.save(cedaEntidade);
         return pdt;
     }

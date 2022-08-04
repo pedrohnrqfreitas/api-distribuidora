@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import javax.sql.DataSource;
 
-@SpringBootApplication(exclude = {SecurityAutoConfiguration.class}	)
+@SpringBootApplication
 @EntityScan("com.distribuidorapixoca.demo.*")
 public class DistribuidorapixocaApplication {
 

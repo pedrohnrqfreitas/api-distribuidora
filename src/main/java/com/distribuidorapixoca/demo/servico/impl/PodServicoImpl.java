@@ -27,25 +27,20 @@ public class PodServicoImpl implements PodServico {
     }
 
     public PodDTO createPod(PodDTO pdt) {
+        if(podRepositorio.existsByNomeIgnoreCaseAndSaborIgnoreCase(
+                pdt.getNome(), pdt.getSabor()
+        )) {
+            throw new RuntimeException("Pod ja existente");
+        }
 
-        Pod podForSave = findPodByNomeAndSabor(pdt);
-        if(podForSave != null) {
-            podForSave.setQuantidade(podForSave.getQuantidade() + pdt.getQuantidade());
-        } else {
-            podForSave = PodBuilder.builder()
+        Pod podEntidade = PodBuilder.builder()
                     .withNome(pdt.getNome()).withPreco(pdt.getPreco())
                     .withSabor(pdt.getSabor()).withQuantidade(pdt.getQuantidade())
                     .withMarca(pdt.getMarca()).withPuffs(pdt.getPuffs())
                     .withIsDescatavel(pdt.getIsDescartavel())
                     .build();
-        }
-
-        podRepositorio.save(podForSave);
+        podRepositorio.save(podEntidade);
         return pdt;
-    }
-
-    public Pod findPodByNomeAndSabor(PodDTO podDTO){
-        return podRepositorio.findByNomeAndSabor(podDTO.getNome(), podDTO.getSabor());
     }
 
     public void deletepod(Long id){
@@ -55,7 +50,7 @@ public class PodServicoImpl implements PodServico {
     public Pod updatePodQuant(Long quantidade, Long id){
         Optional<Pod> pod = podRepositorio.findById(id);
         Pod podNovo = new Pod();
-        if(!pod.isEmpty()){
+        if(pod.isPresent()){
             podNovo.setQuantidade(quantidade);
             podNovo.setId(id);
             podNovo.setMarca(pod.get().getMarca());

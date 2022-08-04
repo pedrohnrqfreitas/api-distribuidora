@@ -1,14 +1,12 @@
 package com.distribuidorapixoca.demo.repositorio;
 
-import com.distribuidorapixoca.demo.model.Pod;
+import com.distribuidorapixoca.demo.model.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
 @Repository
-public interface PodRepositorio extends JpaRepository<Pod, Long> {
-
-   Boolean existsByNomeIgnoreCaseAndSaborIgnoreCase(String nome, String sabor);
-
+public interface UsuarioRepositorio extends JpaRepository<Usuario, Long> {
+        Optional<Usuario> findByUsername (String username);
 }

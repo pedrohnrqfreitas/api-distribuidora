@@ -6,4 +6,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface TabacoRepositorio extends JpaRepository<Tabaco,Long> {
+    Boolean existsByNomeIgnoreCaseAndMarcaIgnoreCase
+            (String nome, String marca);
 }

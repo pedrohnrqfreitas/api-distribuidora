@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/Api/pods")
+@RequestMapping("/api/pods")
 public class PodControlador {
 
     private PodServicoImpl podServico;

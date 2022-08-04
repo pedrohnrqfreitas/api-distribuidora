@@ -25,7 +25,20 @@ public class CarteiraCigarroServicoImpl implements CarteiraCigarroServico {
     }
 
     public CarteiraDeCigarroDTO createCarteiraCigarro(CarteiraDeCigarroDTO pdt){
-        CarteiraCigarro carteiraCigarroEntidade = CarteiraCigarroBuilder.builder().withMarca(pdt.getMarca()).withNome(pdt.getNome()).withQuantidade(pdt.getQuantidade()).withUnidade(pdt.getUnidade()).withPreco(pdt.getPreco()).build();
+        if(carteiraDeCigarroRepositorio.existsByNomeIgnoreCaseAndMarcaIgnoreCase(
+                pdt.getNome(), pdt.getMarca()
+        )){
+            throw new RuntimeException("Carteira de Cigarro ja existente ");
+        }
+
+
+
+        CarteiraCigarro carteiraCigarroEntidade = CarteiraCigarroBuilder.builder()
+                .withMarca(pdt.getMarca())
+                .withNome(pdt.getNome())
+                .withQuantidade(pdt.getQuantidade())
+                .withUnidade(pdt.getUnidade())
+                .withPreco(pdt.getPreco()).build();
         carteiraDeCigarroRepositorio.save(carteiraCigarroEntidade);
         return pdt;
     }

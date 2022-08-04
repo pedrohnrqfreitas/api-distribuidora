@@ -30,9 +30,23 @@ public class BebidasServicoImpl implements BebidasService {
 
 
     public BebidasDTO createBebida(BebidasDTO pdt){
+        if (bebidaRepostorio.existsByNomeIgnoreCaseAndMarcaIgnoreCaseAndSaborIgnoreCase(
+                pdt.getNome(), pdt.getMarca(), pdt.getSabor()
+        )){
+            throw new RuntimeException("Bebida ja existente");
+        }
+
         Optional<Categoria> categoria = categoriaRepositorio.findById(pdt.getCategoria_id());
         if (categoria.isPresent()){
-            Bebidas bebidaEntidade = BebidaBuilder.builder().withIsglutem(pdt.isIsglutem()).withMarca(pdt.getMarca()).withNome(pdt.getNome()).withSabor(pdt.getSabor()).withTeor(pdt.getTeor()).withQuantidade(pdt.getId()).withPreco(pdt.getPreco()).build();
+            Bebidas bebidaEntidade = BebidaBuilder.builder()
+                    .withIsglutem(pdt.isIsglutem())
+                    .withMarca(pdt.getMarca())
+                    .withNome(pdt.getNome())
+                    .withSabor(pdt.getSabor())
+                    .withTeor(pdt.getTeor())
+                    .withQuantidade(pdt.getId())
+                    .withPreco(pdt.getPreco())
+                    .withCategoria(categoria.get()).build();
             bebidaRepostorio.save(bebidaEntidade);
         }
         return pdt;

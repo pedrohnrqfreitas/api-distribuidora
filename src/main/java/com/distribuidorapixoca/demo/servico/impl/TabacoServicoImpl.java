@@ -22,7 +22,17 @@ public class TabacoServicoImpl implements TabacoServico {
     }
 
     public TabacoDTO createTabaco(TabacoDTO pdt) {
-        Tabaco tabacoEntidade = TabacoBuilder.builder().withNome(pdt.getNome()).withGrama(pdt.getGrama()).withMarca(pdt.getMarca()).withPreco(pdt.getPreco()).withQuantidade(pdt.getQuantidade()).build();
+        if(tabacoRepositorio.existsByNomeIgnoreCaseAndMarcaIgnoreCase(
+                pdt.getNome(), pdt.getMarca()
+        )){
+            throw new RuntimeException("Tabaco ja existente");
+        }
+        Tabaco tabacoEntidade = TabacoBuilder.builder()
+                .withNome(pdt.getNome())
+                .withGrama(pdt.getGrama())
+                .withMarca(pdt.getMarca())
+                .withPreco(pdt.getPreco())
+                .withQuantidade(pdt.getQuantidade()).build();
         tabacoRepositorio.save(tabacoEntidade);
         return pdt;
     }
