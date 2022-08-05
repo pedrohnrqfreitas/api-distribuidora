@@ -2,7 +2,7 @@ package com.distribuidorapixoca.demo.controlador;
 
 import com.distribuidorapixoca.demo.dto.TabacoDTO;
 import com.distribuidorapixoca.demo.model.Tabaco;
-import com.distribuidorapixoca.demo.servico.impl.TabacoServicoImpl;
+import com.distribuidorapixoca.demo.servico.Aimpl.TabacoServicoImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

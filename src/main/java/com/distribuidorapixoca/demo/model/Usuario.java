@@ -1,7 +1,7 @@
 package com.distribuidorapixoca.demo.model;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -19,6 +19,7 @@ import java.util.stream.Collectors;
 @Getter
 @Setter
 @Table(name = "usuario")
+@NoArgsConstructor
 public class Usuario implements UserDetails {
 
     @Id
@@ -36,14 +37,14 @@ public class Usuario implements UserDetails {
     @JoinTable(name ="usuario_perfil",
             joinColumns = @JoinColumn(name = "usuario_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "perfil_id", referencedColumnName = "id")
-    )
+   )
     private List<Perfil> perfis = new ArrayList<>();
 
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return perfis.stream()
-                .map(perfil -> new SimpleGrantedAuthority(perfil.getAuthority()))
+                .map(perfil -> new SimpleGrantedAuthority(perfil.getNome().name()))
                 .collect(Collectors.toList());
     }
 

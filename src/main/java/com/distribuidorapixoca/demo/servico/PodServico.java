@@ -1,9 +1,7 @@
 package com.distribuidorapixoca.demo.servico;
 
 import com.distribuidorapixoca.demo.dto.PodDTO;
-import com.distribuidorapixoca.demo.dto.TabacoDTO;
 import com.distribuidorapixoca.demo.model.Pod;
-import com.distribuidorapixoca.demo.model.Tabaco;
 
 import java.util.List;
 

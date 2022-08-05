@@ -2,7 +2,6 @@ package com.distribuidorapixoca.demo.repositorio;
 
 import com.distribuidorapixoca.demo.model.EnumPerfil;
 import com.distribuidorapixoca.demo.model.Perfil;
-import lombok.extern.java.Log;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

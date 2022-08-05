@@ -2,11 +2,12 @@ package com.distribuidorapixoca.demo.controlador;
 
 import com.distribuidorapixoca.demo.dto.CarteiraDeCigarroDTO;
 import com.distribuidorapixoca.demo.model.CarteiraCigarro;
-import com.distribuidorapixoca.demo.servico.impl.CarteiraCigarroServicoImpl;
+import com.distribuidorapixoca.demo.servico.Aimpl.CarteiraCigarroServicoImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/carteiracigarro")
@@ -18,10 +19,9 @@ public class CarteiraCigarroControler {
     }
 
     @GetMapping("/all")
-    public List<CarteiraCigarro> getAllCarteiraCigarro(){
-        List<CarteiraCigarro> carteiraCigarros = new ArrayList<>();
-        carteiraCigarros = carteiraCigarroServico.getAllCarteiraCigarros();
-        return carteiraCigarros;
+    public List<CarteiraDeCigarroDTO> getAllCarteiraCigarro(){
+        List<CarteiraCigarro> carteiraCigarros = carteiraCigarroServico.getAllCarteiraCigarros();
+        return carteiraCigarros.stream().map(carteiraCigarro -> new CarteiraDeCigarroDTO(carteiraCigarro)).collect(Collectors.toList());
     }
 
     @PostMapping("/create-carteiracigarro")

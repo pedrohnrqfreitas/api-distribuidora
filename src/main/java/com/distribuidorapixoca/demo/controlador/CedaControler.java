@@ -2,7 +2,7 @@ package com.distribuidorapixoca.demo.controlador;
 
 import com.distribuidorapixoca.demo.dto.CedaDTO;
 import com.distribuidorapixoca.demo.model.Ceda;
-import com.distribuidorapixoca.demo.servico.impl.CedaServicoImpl;
+import com.distribuidorapixoca.demo.servico.Aimpl.CedaServicoImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

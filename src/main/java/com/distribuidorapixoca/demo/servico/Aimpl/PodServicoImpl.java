@@ -1,4 +1,4 @@
-package com.distribuidorapixoca.demo.servico.impl;
+package com.distribuidorapixoca.demo.servico.Aimpl;
 
 import com.distribuidorapixoca.demo.builder.PodBuilder;
 import com.distribuidorapixoca.demo.dto.PodDTO;

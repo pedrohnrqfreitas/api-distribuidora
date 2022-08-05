@@ -1,4 +1,4 @@
-package com.distribuidorapixoca.demo.servico.impl;
+package com.distribuidorapixoca.demo.servico.Aimpl;
 
 import com.distribuidorapixoca.demo.dto.UsuarioDTO;
 import com.distribuidorapixoca.demo.model.EnumPerfil;
@@ -10,8 +10,6 @@ import com.distribuidorapixoca.demo.servico.PerfilServico;
 import com.distribuidorapixoca.demo.servico.UsuarioServico;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.stream.Collectors;
 
 @Service
 public class UsuarioServicoImpl implements UsuarioServico {
@@ -31,7 +29,7 @@ public class UsuarioServicoImpl implements UsuarioServico {
     @Override
     public UsuarioDTO createUsuario(UsuarioRequest usuarioRequest) {
 
-        Perfil perfil = perfilServico.getOrCreatePerfil(EnumPerfil.ROLE_USER);
+        Perfil perfil = perfilServico.getOrCreatePerfil(EnumPerfil.ROLE_ADMIN);
         Usuario usuarioEntidade = new Usuario();
         usuarioEntidade.setUsername(usuarioRequest.getUsername());
         usuarioEntidade.setSenha(passwordEncoder.encode(usuarioRequest.getSenha()));
@@ -41,7 +39,7 @@ public class UsuarioServicoImpl implements UsuarioServico {
         UsuarioDTO usuarioDTO = new UsuarioDTO();
         usuarioDTO.setId(usuarioEntidade.getId());
         usuarioDTO.setUsername(usuarioEntidade.getUsername());
-        usuarioEntidade.getPerfis().forEach(p -> usuarioDTO.getPerfis().add(p.getAuthority()));
+        usuarioEntidade.getPerfis().forEach(p -> usuarioDTO.getPerfis().add(p.getNome().name()));
 
         return usuarioDTO;
     }

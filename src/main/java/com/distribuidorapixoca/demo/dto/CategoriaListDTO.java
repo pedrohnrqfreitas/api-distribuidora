@@ -1,6 +1,5 @@
 package com.distribuidorapixoca.demo.dto;
 
-import com.distribuidorapixoca.demo.model.Categoria;
 import lombok.Getter;
 import lombok.Setter;
 

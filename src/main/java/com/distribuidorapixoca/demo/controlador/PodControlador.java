@@ -2,7 +2,7 @@ package com.distribuidorapixoca.demo.controlador;
 
 import com.distribuidorapixoca.demo.dto.PodDTO;
 import com.distribuidorapixoca.demo.model.Pod;
-import com.distribuidorapixoca.demo.servico.impl.PodServicoImpl;
+import com.distribuidorapixoca.demo.servico.Aimpl.PodServicoImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
